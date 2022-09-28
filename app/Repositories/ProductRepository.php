@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductRepository implements ProductRepositoryInterface
 {
-    public function getProducts(?int $categoryId, string $name = 'asc', string $price = 'asc'): Paginator
+    public function getProducts(?int $categoryId, string $name, string $price): Paginator
     {
         return Product::query()
             ->with('categories.category.parentCategory')
