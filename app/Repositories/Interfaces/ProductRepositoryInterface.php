@@ -21,5 +21,5 @@ interface ProductRepositoryInterface
      * @param array $data
      * @return Model
      */
-    public function createProduct(array $data) : Model ;
+    public function createProduct(array $data): Model;
 }
