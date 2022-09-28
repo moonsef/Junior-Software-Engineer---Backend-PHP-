@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\GetProductRequest;
+use App\Http\Requests\StoreProductRequest;
 use App\Services\ProductService;
 use Illuminate\Contracts\Pagination\Paginator;
 
@@ -24,6 +25,18 @@ class ProductController extends Controller
             $data['category_id'] ?? null,
             $data['name'] ?? null,
             $data['price'] ?? null,
+        );
+    }
+
+    public function store(StoreProductRequest $request)
+    {
+        $data = $request->validated();
+
+        $this->productService->createProduct(
+            $data['name'],
+            $data['description'],
+            $data['price'],
+            $data['image'],
         );
     }
 }

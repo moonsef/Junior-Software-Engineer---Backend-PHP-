@@ -18,4 +18,17 @@ class ProductService
     {
         return $this->productRepository->getProducts($categoryId, $name ?? 'asc', $price ?? 'asc');
     }
+
+    public function createProduct($name, $description, $price, $image): void
+    {
+        $imageName = $image->getClientOriginalName();
+        $image->move(public_path() . '/uploads/', $imageName);
+
+        $this->productRepository->createProduct([
+            'name' => $name,
+            'description' => $description,
+            'price' => $price,
+            'image' => $imageName,
+        ]);
+    }
 }
